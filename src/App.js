@@ -5,6 +5,9 @@ function App() {
 	const [selected, setSelected] = useState(null)
 	const [newValue, setNewValue] = useState('')
 	const [inputName, setInputName] = useState('')
+
+	const changeVal = useRef()
+
 	const [data, setData] = useState([
 		{
 			id: 1, name: 'Asadbek', age: 21, address: 'Fergana', status: 'Student', nickname: 'zemeister'
@@ -49,14 +52,8 @@ function App() {
 		},
 	])
 
-	const changeVal = useRef()
-
-
-
 	const edit = (val) => {
 		setSelected(val)
-		console.log(val)
-		console.log(selected);
 	}
 
 	const getInputValue = ({ target }) => {
@@ -65,7 +62,6 @@ function App() {
 	}
 
 	const onSave = () => {
-		console.log(newValue);
 		let res = data.map((item) => item.id === selected?.id ? { ...item, [inputName]: newValue } : item)
 		setData(res)
 		setSelected(null)
